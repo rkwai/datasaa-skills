@@ -82,7 +82,7 @@ while IFS= read -r d; do
   if [[ -f "${d}/SKILL.md" ]]; then
     VALID_SKILLS+=("${d}")
   fi
-done < <(find "${SKILLS_ROOT}" -maxdepth 1 -type d -name "datasaa-*" -print | sort)
+done < <(find "${SKILLS_ROOT}" -type d -name "datasaa-*" -not -path "*/.git/*" -print | sort)
 
 if [[ ${#VALID_SKILLS[@]} -eq 0 ]]; then
   echo "No skills found. Expected folders like:" >&2
